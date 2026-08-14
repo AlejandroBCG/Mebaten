@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>document.documentElement.classList.remove('no-js')</script>
-  <title>Mebaten | Distribuyendo Energía a tu Vida</title>
-  <meta name="description" content="Transformadores, tableros eléctricos, bancos de capacitores y subestaciones compactas para proyectos industriales en México, con cotización sin compromiso." />
+  <title>Mebaten | Energía que se diseña para tu proyecto</title>
+  <meta name="description" content="Transformadores, tableros eléctricos, bancos de capacitores y subestaciones compactas para proyectos industriales en México." />
   <link rel="canonical" href="https://www.mebaten.com/" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-  <link rel="preload" as="image" href="assets/hero-mebaten-transformador-real-bright.webp" fetchpriority="high" />
-  <meta property="og:title" content="Mebaten | Distribuyendo Energía a tu Vida" />
+  <link rel="preload" as="image" href="assets/product-transformer.jpg" fetchpriority="high" />
+  <meta property="og:title" content="Mebaten | Energía industrial a la medida" />
   <meta property="og:description" content="Transformadores, tableros eléctricos, bancos de capacitores y subestaciones compactas para proyectos industriales en México." />
   <meta property="og:image" content="https://www.mebaten.com/assets/mebaten-og.jpg" />
   <meta property="og:url" content="https://www.mebaten.com/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mebaten | Distribuyendo Energía a tu Vida" />
+  <meta name="twitter:title" content="Mebaten | Energía industrial a la medida" />
   <meta name="twitter:description" content="Transformadores, tableros eléctricos, bancos de capacitores y subestaciones compactas para proyectos industriales en México." />
   <meta name="twitter:image" content="https://www.mebaten.com/assets/mebaten-og.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -77,11 +77,21 @@
       --blue-soft: rgba(18, 104, 173, 0.18);
       --accent-dark: #c78200;
       --accent-soft: rgba(241, 180, 52, 0.12);
+      --steel: #263746;
+      --muted: var(--text-dim);
+      --line: var(--hairline);
+      --paper: var(--surface);
+      --white: #ffffff;
+      --green: #2d7a66;
+      --red: #d71920;
       --amber: var(--accent);
+      --shadow: none;
       --container: 1240px;
       --gutter: clamp(18px, 4vw, 44px);
       --section-y: clamp(76px, 8vw, 124px);
       --section-y-tight: clamp(58px, 6vw, 92px);
+      --radius: 0px;
+      --radius-lg: 0px;
       --header: 72px;
       --font-display: "Archivo", Inter, "Segoe UI", Arial, sans-serif;
       --font-body: "Inter", "Segoe UI", Arial, sans-serif;
@@ -335,15 +345,13 @@
 
     .button,
     .quote-link {
-      position: relative;
-      isolation: isolate;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 44px;
       padding: 0 18px;
       color: var(--void);
-      background: transparent;
+      background: var(--accent);
       border: 0;
       border-radius: 0;
       cursor: pointer;
@@ -352,6 +360,24 @@
       box-shadow: none;
       transition: transform 180ms ease, background 180ms ease, color 180ms ease;
       will-change: transform;
+    }
+
+    .button:hover,
+    .quote-link:hover {
+      color: var(--void);
+      background: transparent;
+      box-shadow: none;
+      transform: translateY(-1px);
+    }
+
+
+
+
+    .button,
+    .quote-link {
+      position: relative;
+      isolation: isolate;
+      background: transparent;
     }
 
     .button::before,
@@ -367,13 +393,8 @@
       );
     }
 
-    .button:hover,
-    .quote-link:hover {
-      color: var(--void);
-      background: transparent;
-      box-shadow: none;
-      transform: translateY(-1px);
-    }
+
+
 
     .button:hover::before,
     .quote-link:hover::before {
@@ -1889,6 +1910,48 @@
       color: rgba(74, 96, 118, 0.62);
     }
 
+    .file-drop {
+      position: relative;
+      min-height: 92px;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      color: var(--dim-on-light);
+      background: rgba(10, 79, 144, 0.04);
+      border: 1px dashed rgba(10, 79, 144, 0.42);
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 180ms var(--ease-out), background 180ms var(--ease-out);
+    }
+
+    .file-drop:hover,
+    .file-drop:focus-within {
+      background: rgba(10, 79, 144, 0.08);
+      border-color: var(--blue);
+    }
+
+    .file-drop input {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .file-drop strong {
+      display: block;
+      color: var(--ink-on-light);
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .file-drop span {
+      display: block;
+      margin-top: 4px;
+      font-size: 0.82rem;
+    }
     .form-note {
       margin: 12px 0 0;
       color: var(--dim-on-light);
@@ -2237,8 +2300,8 @@
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
         background:
-          linear-gradient(90deg, var(--paper-light) 0%, rgba(245, 248, 251, 0) 28px) left center / 44px 100% no-repeat,
-          linear-gradient(270deg, var(--paper-light) 0%, rgba(245, 248, 251, 0) 28px) right center / 44px 100% no-repeat;
+          linear-gradient(90deg, var(--paper) 0%, rgba(245, 248, 251, 0) 28px) left center / 44px 100% no-repeat,
+          linear-gradient(270deg, var(--paper) 0%, rgba(245, 248, 251, 0) 28px) right center / 44px 100% no-repeat;
       }
 
       .product-tabs::-webkit-scrollbar {
@@ -2533,7 +2596,7 @@
       </a>
 
       <nav class="nav-links" id="site-nav" aria-label="Secciones principales">
-        <a href="#empresa">Empresa</a>
+        <a href="#empresa" class="active">Empresa</a>
         <a href="#productos">Productos</a>
         <a href="#proyectos">Proyectos</a>
         <a href="#calidad">Calidad</a>
@@ -2552,7 +2615,7 @@
   <main>
     <section class="hero" id="inicio" data-section>
       <div class="hero-bg" aria-hidden="true">
-        <img src="assets/hero-mebaten-transformador-real-bright.webp" width="1672" height="941" alt="" fetchpriority="high" decoding="async" />
+        <img src="assets/hero-mebaten-transformador-real-bright.png" width="1672" height="941" alt="" fetchpriority="high" decoding="async" />
       </div>
       <div class="hero-inner">
         <div class="hero-grid">
@@ -2560,14 +2623,14 @@
             <div class="hero-mark" aria-hidden="true">
               <img src="assets/hero-mebaten-logo-full.png" width="1024" height="538" alt="" decoding="async" />
             </div>
-            <h1 class="hero-title" aria-label="Distribuyendo Energía a tu Vida">
+            <h1 class="hero-title" aria-label="Distribuyendo Energ&iacute;a a tu Vida">
               <span class="line"><span class="word" style="--i:0">Distribuyendo</span></span>
-              <span class="line"><span class="word" style="--i:1">Energía</span> <span class="word" style="--i:2">a tu</span></span>
+              <span class="line"><span class="word" style="--i:1">Energ&iacute;a</span> <span class="word" style="--i:2">a tu</span></span>
               <span class="line"><span class="word" style="--i:3">Vida</span></span>
             </h1>
             <div class="hero-actions">
               <a class="button" href="#contacto">Solicitar cotización</a>
-              <a class="technical-link" href="#productos">Línea de equipos</a>
+              <a class="technical-link" href="#productos">L&iacute;nea de equipos</a>
             </div>
           </div>
         </div>
@@ -2578,29 +2641,29 @@
       <div class="section-inner">
         <div class="section-head reveal">
           <div>
-            <h2>Sobre nosotros</h2>
+            <h2>Sobre Nosotros</h2>
           </div>
         </div>
 
         <div class="company-grid">
           <article class="company-feature reveal">
             <div class="company-feature__image">
-              <img decoding="async" src="assets/about-transformer.jpg" width="420" height="401" alt="Transformador eléctrico fabricado para proyecto industrial" loading="lazy" />
+              <img decoding="async" src="assets/about-transformer.jpg" width="420" height="401" alt="Transformador el&eacute;ctrico fabricado para proyecto industrial" loading="lazy" />
             </div>
             <div class="company-feature__copy">
-              <h3>Empresa mexicana de soluciones eléctricas</h3>
-              <p>Mebaten es una empresa mexicana con más de 15 años de experiencia especializada en el suministro de transformadores y equipos eléctricos industriales bajo pedido. Fabricamos soluciones eléctricas ajustadas a las necesidades de cada proyecto, cumpliendo normativas técnicas nacionales. Nuestro catálogo incluye transformadores en Norma J y K, tableros eléctricos, subestaciones compactas y bancos de capacitores. Ofrecemos atención personalizada y cobertura nacional.</p>
+              <h3>Empresa mexicana de soluciones el&eacute;ctricas</h3>
+              <p>Mebaten es una empresa mexicana con m&aacute;s de 15 a&ntilde;os de experiencia especializada en el suministro de transformadores y equipos el&eacute;ctricos industriales bajo pedido. Fabricamos soluciones el&eacute;ctricas ajustadas a las necesidades de cada proyecto, cumpliendo normativas t&eacute;cnicas nacionales. Nuestro cat&aacute;logo incluye transformadores en Norma J y K, tableros el&eacute;ctricos, subestaciones compactas y bancos de capacitores. Ofrecemos atenci&oacute;n personalizada y cobertura nacional.</p>
             </div>
           </article>
 
           <div class="company-stack stagger">
             <article class="company-item reveal">
               <h3>Cumplimiento normativo</h3>
-              <p>Selección NOM, IEC, IEEE, ANSI y J/K.</p>
+              <p>Selecci&oacute;n NOM, IEC, IEEE, ANSI y J/K.</p>
             </article>
             <article class="company-item company-item--coverage reveal">
               <h3>Cobertura nacional</h3>
-              <p>Suministro, atención y entrega para proyectos en todo México.</p>
+              <p>Suministro, atenci&oacute;n y entrega para proyectos en todo M&eacute;xico.</p>
             </article>
           </div>
         </div>
@@ -2625,58 +2688,60 @@
                   <button class="transformer-subtab active" type="button" data-transformer-type="pedestal" role="tab" aria-selected="true">Pedestal</button>
                   <button class="transformer-subtab" type="button" data-transformer-type="sumergible" role="tab" aria-selected="false">Sumergible</button>
                   <button class="transformer-subtab" type="button" data-transformer-type="poste" role="tab" aria-selected="false">Poste</button>
-                  <button class="transformer-subtab" type="button" data-transformer-type="estacion" role="tab" aria-selected="false">Estación</button>
-                  <button class="transformer-subtab" type="button" data-transformer-type="gargantas" role="tab" aria-selected="false">Subestación con gargantas</button>
+                  <button class="transformer-subtab" type="button" data-transformer-type="estacion" role="tab" aria-selected="false">Estaci&oacute;n</button>
+                  <button class="transformer-subtab" type="button" data-transformer-type="gargantas" role="tab" aria-selected="false">Subestaci&oacute;n con gargantas</button>
                   <button class="transformer-subtab" type="button" data-transformer-type="seco-vpi" role="tab" aria-selected="false">Seco VPI</button>
                   <button class="transformer-subtab" type="button" data-transformer-type="seco-encapsulado" role="tab" aria-selected="false">Seco encapsulado</button>
                 </div>
               </div>
-              <button class="tab-button" type="button" data-product="tableros" data-index="02" role="tab" aria-selected="false" aria-controls="panel-tableros"><span>Tableros eléctricos</span></button>
+              <button class="tab-button" type="button" data-product="tableros" data-index="02" role="tab" aria-selected="false" aria-controls="panel-tableros"><span>Tableros el&eacute;ctricos</span></button>
               <button class="tab-button" type="button" data-product="capacitores" data-index="03" role="tab" aria-selected="false" aria-controls="panel-capacitores"><span>Bancos de capacitores</span></button>
               <button class="tab-button" type="button" data-product="subestaciones" data-index="04" role="tab" aria-selected="false" aria-controls="panel-subestaciones"><span>Subestaciones compactas</span></button>
             </div>
             <div class="tabs-progress" aria-hidden="true"><span></span></div>
-            <p class="tabs-hint" aria-hidden="true">Desliza para ver más productos</p>
+            <p class="tabs-hint" aria-hidden="true">Desliza para ver m&aacute;s productos</p>
           </div>
+          <!-- PENDIENTE FASE 5: convertir a WebP. product-control-panels.png pesa 2 MB
+     y mebaten-logo-full.png 420 KB. Ninguna imagen del sitio está optimizada. -->
           <div class="product-panels reveal">
             <article class="product-panel active" id="panel-transformadores" data-panel="transformadores" role="tabpanel" aria-hidden="false">
               <div class="product-image">
                 <img data-transformer-image decoding="sync" src="assets/carousel/pedestal/pedestal-02.jpeg" width="1280" height="1152" alt="Transformador tipo pedestal Mebaten" loading="eager" />
               </div>
               <div class="product-copy">
-                <span class="tag" data-transformer-tag>Transformación eléctrica · Norma J y K</span>
+                <span class="tag" data-transformer-tag>Transformaci&oacute;n el&eacute;ctrica &middot; Norma J y K</span>
 
                 <h3 data-transformer-title>Transformador tipo pedestal</h3>
-                <p data-transformer-description>Transformadores tipo pedestal para operación exterior sobre base de concreto, con gabinete seguro para distribución eléctrica subterránea.</p>
-                <div class="tech-specs" aria-label="Especificaciones técnicas de transformadores">
-                  <div class="tech-spec"><span>Capacidad</span><strong data-transformer-spec="capacidad">25 kVA hasta 5,000 kVA y más</strong></div>
-                  <div class="tech-spec"><span>Tensión</span><strong data-transformer-spec="tension">Primario hasta 34.5 kV; secundario 240/120, 220/127, 440/254 o 480/277</strong></div>
-                  <div class="tech-spec"><span>Tipo</span><strong data-transformer-spec="tipo">Monofásico o trifásico, operación radial o anillo</strong></div>
+                <p data-transformer-description>Transformadores tipo pedestal para operaci&oacute;n exterior sobre base de concreto, con gabinete seguro para distribuci&oacute;n el&eacute;ctrica subterr&aacute;nea.</p>
+                <div class="tech-specs" aria-label="Especificaciones t&eacute;cnicas de transformadores">
+                  <div class="tech-spec"><span>Capacidad</span><strong data-transformer-spec="capacidad">25 kVA hasta 5,000 kVA y m&aacute;s</strong></div>
+                  <div class="tech-spec"><span>Tensi&oacute;n</span><strong data-transformer-spec="tension">Primario hasta 34.5 kV; secundario 240/120, 220/127, 440/254 o 480/277</strong></div>
+                  <div class="tech-spec"><span>Tipo</span><strong data-transformer-spec="tipo">Monof&aacute;sico o trif&aacute;sico, operaci&oacute;n radial o anillo</strong></div>
                   <div class="tech-spec"><span>Norma</span><strong data-transformer-spec="norma">NMX-J-285 / K-0000-04 / K-0000-07 / K-0000-08</strong></div>
                 </div>
                 <ul class="spec-list" data-transformer-points>
-                  <li>Diseño para instalación a nivel de suelo en exteriores.</li>
+                  <li>Dise&ntilde;o para instalaci&oacute;n a nivel de suelo en exteriores.</li>
                   <li>Gabinete a prueba de vandalismo y tanque en acero negro o inoxidable.</li>
-                  <li>Aplicación residencial, comercial o industrial según configuración.</li>
+                  <li>Aplicaci&oacute;n residencial, comercial o industrial seg&uacute;n configuraci&oacute;n.</li>
                 </ul>
                 <div class="product-actions">
                   <a class="button" href="#contacto">Cotizar transformador</a>
-                  <a class="button ghost" href="assets/catalogos/catalogo-transformadores.pdf" target="_blank" rel="noopener" aria-label="Descargar catálogo de transformadores en PDF">Catálogo Transformadores</a>
+                  <a class="button ghost" href="assets/catalogos/catalogo-transformadores.pdf" target="_blank" rel="noopener" aria-label="Descargar cat&aacute;logo de transformadores en PDF">Cat&aacute;logo Transformadores</a>
                 </div>
               </div>
             </article>
 
             <article class="product-panel" id="panel-tableros" data-panel="tableros" role="tabpanel" aria-hidden="false">
               <div class="product-image">
-                <img decoding="sync" src="assets/product-control-panels.jpg" width="1402" height="1121" alt="Tableros eléctricos de control industriales" loading="lazy" />
+                <img decoding="sync" src="assets/product-control-panels.jpg" width="1402" height="1121" alt="Tableros eléctricos de control industriales" loading="eager" />
               </div>
               <div class="product-copy">
                 <span class="tag">Control y distribución</span>
                 <h3>Tableros eléctricos</h3>
                 <p>Tableros configurables para distribución, control o transferencia.</p>
-                <div class="tech-specs" aria-label="Especificaciones técnicas de tableros">
-                  <div class="tech-spec"><span>Servicio</span><strong>Distribución, control o transferencia</strong></div>
-                  <div class="tech-spec"><span>Capacidad</span><strong>Según carga y protección</strong></div>
+                <div class="tech-specs" aria-label="Especificaciones t&eacute;cnicas de tableros">
+                  <div class="tech-spec"><span>Servicio</span><strong>Distribuci&oacute;n, control o transferencia</strong></div>
+                  <div class="tech-spec"><span>Capacidad</span><strong>Seg&uacute;n carga y protecci&oacute;n</strong></div>
                   <div class="tech-spec"><span>Montaje</span><strong>Muro, piso o gabinete</strong></div>
                   <div class="tech-spec"><span>Norma</span><strong>NOM, IEC o NMX aplicable</strong></div>
                 </div>
@@ -2686,24 +2751,24 @@
                 </ul>
                 <div class="product-actions">
                   <a class="button" href="#contacto">Cotizar tablero</a>
-                  <a class="button ghost" href="assets/catalogos/catalogo-tableros-electricos.pdf" target="_blank" rel="noopener" aria-label="Descargar catálogo de tableros eléctricos en PDF">Catálogo Tableros Eléctricos</a>
+                  <a class="button ghost" href="assets/catalogos/catalogo-tableros-electricos.pdf" target="_blank" rel="noopener" aria-label="Descargar cat&aacute;logo de tableros el&eacute;ctricos en PDF">Cat&aacute;logo Tableros El&eacute;ctricos</a>
                 </div>
               </div>
             </article>
 
             <article class="product-panel" id="panel-capacitores" data-panel="capacitores" role="tabpanel" aria-hidden="false">
               <div class="product-image">
-                <img decoding="sync" src="assets/product-capacitors.jpg" width="960" height="1280" alt="Banco de capacitores Mebaten" loading="lazy" />
+                <img decoding="sync" src="assets/product-capacitors.jpg" width="960" height="1280" alt="Banco de capacitores Mebaten" loading="eager" />
               </div>
               <div class="product-copy">
                 <span class="tag">Eficiencia energética</span>
                 <h3>Bancos de capacitores</h3>
                 <p>Corrección de factor de potencia para sistemas industriales.</p>
-                <div class="tech-specs" aria-label="Especificaciones técnicas de bancos de capacitores">
-                  <div class="tech-spec"><span>Capacidad</span><strong>Corrección según demanda</strong></div>
-                  <div class="tech-spec"><span>Operación</span><strong>Fija o automática</strong></div>
-                  <div class="tech-spec"><span>Tensión</span><strong>Según tensión de red</strong></div>
-                  <div class="tech-spec"><span>Aplicación</span><strong>Factor de potencia</strong></div>
+                <div class="tech-specs" aria-label="Especificaciones t&eacute;cnicas de bancos de capacitores">
+                  <div class="tech-spec"><span>Capacidad</span><strong>Correcci&oacute;n seg&uacute;n demanda</strong></div>
+                  <div class="tech-spec"><span>Operaci&oacute;n</span><strong>Fija o autom&aacute;tica</strong></div>
+                  <div class="tech-spec"><span>Tensi&oacute;n</span><strong>Seg&uacute;n tensi&oacute;n de red</strong></div>
+                  <div class="tech-spec"><span>Aplicaci&oacute;n</span><strong>Factor de potencia</strong></div>
                 </div>
                 <ul class="spec-list">
                   <li>Configuración para gestión de energía reactiva.</li>
@@ -2711,23 +2776,23 @@
                 </ul>
                 <div class="product-actions">
                   <a class="button" href="#contacto">Cotizar capacitores</a>
-                  <a class="button ghost" href="assets/catalogos/catalogo-bancos-capacitores.pdf" target="_blank" rel="noopener" aria-label="Descargar catálogo de bancos de capacitores en PDF">Catálogo Bancos de Capacitores</a>
+                  <a class="button ghost" href="assets/catalogos/catalogo-bancos-capacitores.pdf" target="_blank" rel="noopener" aria-label="Descargar cat&aacute;logo de bancos de capacitores en PDF">Cat&aacute;logo Bancos de Capacitores</a>
                 </div>
               </div>
             </article>
 
             <article class="product-panel" id="panel-subestaciones" data-panel="subestaciones" role="tabpanel" aria-hidden="false">
               <div class="product-image">
-                <img decoding="sync" src="assets/product-substation-compacta.jpeg" width="960" height="1280" alt="Subestación compacta Mebaten" loading="lazy" />
+                <img decoding="sync" src="assets/product-substation-compacta.jpeg" width="960" height="1280" alt="Subestación compacta Mebaten" loading="eager" />
               </div>
               <div class="product-copy">
                 <span class="tag">Infraestructura compacta</span>
                 <h3>Subestaciones compactas</h3>
                 <p>Transformación y distribución en formato compacto.</p>
-                <div class="tech-specs" aria-label="Especificaciones técnicas de subestaciones compactas">
+                <div class="tech-specs" aria-label="Especificaciones t&eacute;cnicas de subestaciones compactas">
                   <div class="tech-spec"><span>Capacidad</span><strong>Dimensionamiento por proyecto</strong></div>
-                  <div class="tech-spec"><span>Tensión</span><strong>Media a baja tensión</strong></div>
-                  <div class="tech-spec"><span>Configuración</span><strong>Compacta, pedestal o interior</strong></div>
+                  <div class="tech-spec"><span>Tensi&oacute;n</span><strong>Media a baja tensi&oacute;n</strong></div>
+                  <div class="tech-spec"><span>Configuraci&oacute;n</span><strong>Compacta, pedestal o interior</strong></div>
                   <div class="tech-spec"><span>Norma</span><strong>NOM, IEC o IEEE aplicable</strong></div>
                 </div>
                 <ul class="spec-list">
@@ -2735,8 +2800,8 @@
                   <li>Solución compacta para optimizar espacio, instalación y operación.</li>
                 </ul>
                                 <div class="product-actions">
-                  <a class="button" href="#contacto">Cotizar subestación</a>
-                  <a class="button ghost" href="assets/catalogos/catalogo-subestaciones-compactas.pdf" target="_blank" rel="noopener" aria-label="Descargar catálogo de subestaciones compactas en PDF">Catálogo Subestaciones Compactas</a>
+                  <a class="button" href="#contacto">Cotizar subestaci&oacute;n</a>
+                  <a class="button ghost" href="assets/catalogos/catalogo-subestaciones-compactas.pdf" target="_blank" rel="noopener" aria-label="Descargar cat&aacute;logo de subestaciones compactas en PDF">Cat&aacute;logo Subestaciones Compactas</a>
                 </div>
               </div>
             </article>
@@ -2749,7 +2814,7 @@
       <div class="section-inner">
         <div class="section-head reveal">
           <div>
-            <h2>Equipos que ya están operando</h2>
+            <h2>Equipos que ya est&aacute;n operando</h2>
           </div>
         </div>
 
@@ -2791,12 +2856,12 @@
           <article class="process-stage is-active">
             <span>01</span>
             <h3>Entendemos</h3>
-            <p>Revisamos capacidad, tensiones, aplicación y condiciones de tu proyecto.</p>
+            <p>Revisamos capacidad, tensiones, aplicaci&oacute;n y condiciones de tu proyecto.</p>
           </article>
           <article class="process-stage">
             <span>02</span>
             <h3>Definimos</h3>
-            <p>Te ayudamos a seleccionar y cotizar la solución adecuada, validando su viabilidad técnica.</p>
+            <p>Te ayudamos a seleccionar y cotizar la soluci&oacute;n adecuada, validando su viabilidad t&eacute;cnica.</p>
           </article>
           <article class="process-stage">
             <span>03</span>
@@ -2811,7 +2876,7 @@
           <article class="process-stage">
             <span>05</span>
             <h3>Entregamos</h3>
-            <p>Coordinamos el envío para que tu equipo llegue a destino y pueda integrarse a tu proyecto.</p>
+            <p>Coordinamos el env&iacute;o para que tu equipo llegue a destino y pueda integrarse a tu proyecto.</p>
           </article>
         </div>
 
@@ -2828,20 +2893,20 @@
 
         <div class="faq-list reveal stagger">
           <details class="faq-item">
-            <summary>¿Cuánto tarda la entrega de un equipo?</summary>
-            <div class="faq-content"><div><p>El tiempo de entrega depende del tipo de equipo, capacidad, configuración y disponibilidad. <strong>Al cotizar, te confirmamos el plazo estimado de fabricación y entrega.</strong></p></div></div>
+            <summary>&iquest;CU&Aacute;NTO TARDA LA ENTREGA DE UN EQUIPO?</summary>
+            <div class="faq-content"><div><p>El tiempo de entrega depende del tipo de equipo, capacidad, configuraci&oacute;n y disponibilidad. <strong>Al cotizar, te confirmamos el plazo estimado de fabricaci&oacute;n y entrega.</strong></p></div></div>
           </details>
           <details class="faq-item">
-            <summary>¿Manejan fabricación o configuración bajo pedido?</summary>
-            <div class="faq-content"><div><p><strong>Sí.</strong> Podemos fabricar y configurar equipos de acuerdo con los requerimientos técnicos de tu proyecto, sujetos a validación de ingeniería.</p></div></div>
+            <summary>&iquest;MANEJAN FABRICACI&Oacute;N O CONFIGURACI&Oacute;N BAJO PEDIDO?</summary>
+            <div class="faq-content"><div><p><strong>S&iacute;. Podemos fabricar y configurar equipos de acuerdo con los requerimientos t&eacute;cnicos de tu proyecto</strong>, sujetos a validaci&oacute;n de ingenier&iacute;a.</p></div></div>
           </details>
           <details class="faq-item">
-            <summary>¿Atienden proyectos en toda la República Mexicana?</summary>
-            <div class="faq-content"><div><p><strong>Sí.</strong> Suministramos equipos y coordinamos entregas a proyectos en todo México.</p></div></div>
+            <summary>&iquest;ATIENDEN PROYECTOS EN TODA LA REP&Uacute;BLICA MEXICANA?</summary>
+            <div class="faq-content"><div><p><strong>S&iacute;. Suministramos equipos y coordinamos entregas a proyectos en todo M&eacute;xico.</strong></p></div></div>
           </details>
           <details class="faq-item">
-            <summary>¿La cotización tiene costo o compromiso?</summary>
-            <div class="faq-content"><div><p><strong>No.</strong> La cotización es sin compromiso. Puedes compartirnos los requerimientos de tu proyecto y te ayudamos a revisar la solución adecuada y preparar tu cotización.</p></div></div>
+            <summary>&iquest;LA COTIZACI&Oacute;N TIENE COSTO O COMPROMISO?</summary>
+            <div class="faq-content"><div><p><strong>No. La cotizaci&oacute;n es sin compromiso.</strong> Puedes compartirnos los requerimientos de tu proyecto y te ayudamos a revisar la soluci&oacute;n adecuada y preparar tu cotizaci&oacute;n.</p></div></div>
           </details>
         </div>
       </div>
@@ -2850,19 +2915,19 @@
     <section class="contact" id="contacto" data-section>
       <div class="section-inner contact-layout">
         <div class="contact-card reveal">
-          <h2>Cotiza tu proyecto eléctrico</h2>
-          <p>Déjanos tus datos y cuéntanos qué equipo necesitas. Un asesor comercial revisará tu solicitud y se pondrá en contacto contigo para ayudarte con la cotización.</p>
+          <h2>Cotiza tu proyecto el&eacute;ctrico</h2>
+          <p>D&eacute;janos tus datos y cu&eacute;ntanos qu&eacute; equipo necesitas. Un asesor comercial revisar&aacute; tu solicitud y se pondr&aacute; en contacto contigo para ayudarte con la cotizaci&oacute;n.</p>
 
-          <div class="contact-points" aria-label="Beneficios de atención">
+          <div class="contact-points" aria-label="Beneficios de atenci&oacute;n">
             <article class="contact-point">
               <div>
-                <h3>Atención personalizada</h3>
-                <p>Un asesor comercial dará seguimiento a tu solicitud.</p>
+                <h3>Atenci&oacute;n personalizada</h3>
+                <p>Un asesor comercial dar&aacute; seguimiento a tu solicitud.</p>
               </div>
             </article>
             <article class="contact-point">
               <div>
-                <h3>Cobertura en todo México</h3>
+                <h3>Cobertura en todo M&eacute;xico</h3>
                 <p>Suministramos equipos y coordinamos entregas a nivel nacional.</p>
               </div>
             </article>
@@ -2874,7 +2939,7 @@
             </article>
           </div>
 
-          <h3 class="contact-direct-title">¿Prefieres contactarnos directamente?</h3>
+          <h3 class="contact-direct-title">&iquest;Prefieres contactarnos directamente?</h3>
           <div class="contact-list">
             <div class="contact-row">
               <span>Llamadas</span>
@@ -2884,7 +2949,7 @@
               <span>WhatsApp</span>
               <div>
                 <a href="https://wa.me/522282038038?text=Hola%20Mebaten%2C%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener">228 203 8038</a>
-                <p>También puedes enviarnos tu requerimiento directamente por WhatsApp para solicitar una cotización.</p>
+                <p>Tambi&eacute;n puedes enviarnos tu requerimiento directamente por WhatsApp para solicitar una cotizaci&oacute;n.</p>
               </div>
             </div>
             <div class="contact-row">
@@ -2893,13 +2958,14 @@
             </div>
             <div class="contact-row">
               <span>Horario</span>
-              <strong>Lun - Vie · 9:00 - 18:00</strong>
+              <strong>Lun - Vie &middot; 9:00 - 18:00</strong>
             </div>
           </div>
         </div>
 
-        <!-- Envío backend: /api/cotizacion funciona en Vercel y en el servidor local de pruebas. -->
-        <form class="form-card reveal" id="quote-form" action="mailto:alex.bglez97@gmail.com" method="post" data-endpoint="/api/cotizacion" novalidate>
+        <!-- Para activar el env&iacute;o real: crear un formulario en formspree.io o web3forms.com
+     y pegar la URL del endpoint en data-endpoint. Sin valor, cae a mailto:. -->
+        <form class="form-card reveal" id="quote-form" action="mailto:ventas@mebaten.com" method="post" enctype="multipart/form-data" data-endpoint="" novalidate>
           <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
             <label for="empresa-alt">No llenar</label>
             <input type="text" id="empresa-alt" name="_gotcha" tabindex="-1" autocomplete="off" />
@@ -2916,7 +2982,7 @@
               <small class="field-error" id="company-error"></small>
             </div>
             <div class="field">
-              <label for="phone">Teléfono</label>
+              <label for="phone">Tel&eacute;fono</label>
               <input id="phone" name="phone" autocomplete="tel" aria-describedby="phone-error" required />
               <small class="field-error" id="phone-error" aria-live="polite"></small>
             </div>
@@ -2927,31 +2993,38 @@
             </div>
             <div class="field full">
               <label for="location">Ciudad / Estado</label>
-              <input id="location" name="location" autocomplete="address-level2" aria-describedby="location-error" required />
-              <small class="field-error" id="location-error" aria-live="polite"></small>
+              <input id="location" name="location" autocomplete="address-level2" aria-describedby="location-error" />
+              <small class="field-error" id="location-error"></small>
             </div>
             <div class="field">
-              <label for="equipment">¿Qué necesitas cotizar?</label>
+              <label for="equipment">&iquest;Qu&eacute; necesitas cotizar?</label>
               <select id="equipment" name="equipment" aria-describedby="equipment-error" required>
-                <option value="">Selecciona una opción</option>
+                <option value="">Selecciona una opci&oacute;n</option>
                 <option>Transformador</option>
-                <option>Tablero eléctrico</option>
+                <option>Tablero el&eacute;ctrico</option>
                 <option>Banco de capacitores</option>
-                <option>Subestación compacta</option>
+                <option>Subestaci&oacute;n compacta</option>
                 <option>Varios equipos / proyecto</option>
                 <option>Otro</option>
               </select>
               <small class="field-error" id="equipment-error" aria-live="polite"></small>
             </div>
             <div class="field">
-              <label for="message">Cuéntanos qué necesitas</label>
-              <textarea id="message" name="message" aria-describedby="message-error" required placeholder="Ej. Transformador pedestal 500 kVA, 13,200 V a 440/254 V, 2 piezas. Si es un proyecto, compártenos lo que tengas."></textarea>
-              <p class="form-note">Si cuentas con diagramas, fotografías o especificaciones, puedes enviarlos después por WhatsApp o correo.</p>
+              <label for="message">Cu&eacute;ntanos qu&eacute; necesitas</label>
+              <textarea id="message" name="message" aria-describedby="message-error" required placeholder="Ej. Transformador pedestal 500 kVA, 13,200 V a 440/254 V, 2 piezas. Si es un proyecto, comp&aacute;rtenos lo que tengas."></textarea>
               <small class="field-error" id="message-error" aria-live="polite"></small>
             </div>
+            <div class="field full">
+              <label for="attachment">Adjuntar archivo (opcional)</label>
+              <label class="file-drop" for="attachment">
+                <input id="attachment" name="attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" aria-describedby="attachment-error attachment-help" />
+                <span><strong>Arrastra y suelta tu archivo aqu&iacute; o haz clic para seleccionar.</strong><span id="attachment-help">Formatos permitidos: PDF, JPG, PNG. Tama&ntilde;o m&aacute;ximo: 10 MB.</span></span>
+              </label>
+              <small class="field-error" id="attachment-error" aria-live="polite"></small>
+            </div>
           </div>
-          <button class="button" type="submit">Solicitar cotización</button>
-          <p class="form-note">Uno de nuestros asesores comerciales revisará tu solicitud y se pondrá en contacto contigo para conocer los detalles de tu proyecto y preparar tu cotización.</p>
+          <button class="button" type="submit">Solicitar cotizaci&oacute;n</button>
+          <p class="form-note">Uno de nuestros asesores comerciales revisar&aacute; tu solicitud y se pondr&aacute; en contacto contigo para conocer los detalles de tu proyecto y preparar tu cotizaci&oacute;n.</p>
           <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -2962,18 +3035,18 @@
   <div class="project-modal" data-project-modal role="dialog" aria-modal="true" aria-hidden="true" aria-label="Galeria de proyecto" hidden>
     <div class="project-modal__panel">
       <button class="project-modal__button project-modal__close" type="button" data-project-modal-close aria-label="Cerrar galeria">X</button>
-      <button class="project-modal__button project-modal__prev" type="button" data-project-modal-prev aria-label="Imagen anterior">‹</button>
+      <button class="project-modal__button project-modal__prev" type="button" data-project-modal-prev aria-label="Imagen anterior">&#8249;</button>
       <div class="project-modal__image-wrap">
         <img class="project-modal__image" data-project-modal-image src="" alt="" decoding="async" />
       </div>
-      <button class="project-modal__button project-modal__next" type="button" data-project-modal-next aria-label="Imagen siguiente">›</button>
+      <button class="project-modal__button project-modal__next" type="button" data-project-modal-next aria-label="Imagen siguiente">&#8250;</button>
       <div class="project-modal__meta">
         <p class="project-modal__title" data-project-modal-title></p>
         <span class="project-modal__count" data-project-modal-count></span>
       </div>
     </div>
   </div>
-  <a class="whatsapp-float" href="https://wa.me/522282038038?text=Hola%20Mebaten%2C%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <a class="whatsapp-float" href="https://wa.me/522281773814?text=Hola%20Mebaten%2C%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 32 32" aria-hidden="true">
       <path d="M16.04 3.2c-7.05 0-12.78 5.72-12.78 12.76 0 2.25.59 4.45 1.72 6.39L3.15 29l6.82-1.79a12.75 12.75 0 0 0 6.07 1.54h.01c7.04 0 12.77-5.72 12.77-12.77 0-3.41-1.33-6.62-3.74-9.03a12.68 12.68 0 0 0-9.04-3.75Zm0 23.39h-.01c-1.93 0-3.83-.52-5.48-1.5l-.39-.23-4.05 1.06 1.08-3.95-.25-.4a10.55 10.55 0 0 1-1.62-5.61c0-5.87 4.78-10.64 10.66-10.64 2.84 0 5.52 1.11 7.53 3.12a10.58 10.58 0 0 1 3.12 7.54c0 5.88-4.78 10.61-10.59 10.61Zm5.84-7.96c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.71.16-.21.32-.82 1.04-1 1.25-.18.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.18.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.71-1.7-.98-2.34-.26-.62-.52-.53-.71-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.12 1.09-1.12 2.66s1.14 3.08 1.3 3.3c.16.21 2.25 3.43 5.45 4.81.76.33 1.36.53 1.82.68.76.24 1.46.21 2.01.13.61-.09 1.89-.77 2.15-1.52.27-.74.27-1.38.19-1.52-.08-.13-.29-.21-.61-.37Z" />
     </svg>
@@ -2981,7 +3054,7 @@
 
   <nav class="mobile-actions" aria-label="Acciones rápidas">
     <a href="#contacto">Cotizar</a>
-    <a href="https://wa.me/522282038038?text=Hola%20Mebaten%2C%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://wa.me/522281773814?text=Hola%20Mebaten%2C%20me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener">WhatsApp</a>
   </nav>
   <footer class="site-footer">
     <div class="footer-inner">
@@ -3102,19 +3175,19 @@
         width: 1280,
         height: 1152,
         alt: "Transformador tipo pedestal Mebaten",
-        tag: "Transformación eléctrica · Norma J y K",
+        tag: "Transformaci&oacute;n el&eacute;ctrica &middot; Norma J y K",
         title: "Transformador tipo pedestal",
-        description: "Transformadores tipo pedestal para operación exterior sobre base de concreto, con gabinete seguro para distribución eléctrica subterránea.",
+        description: "Transformadores tipo pedestal para operaci&oacute;n exterior sobre base de concreto, con gabinete seguro para distribuci&oacute;n el&eacute;ctrica subterr&aacute;nea.",
         specs: {
-          capacidad: "25 kVA hasta 5,000 kVA y más",
+          capacidad: "25 kVA hasta 5,000 kVA y m&aacute;s",
           tension: "Primario hasta 34.5 kV; secundario 240/120, 220/127, 440/254 o 480/277",
-          tipo: "Monofásico o trifásico, operación radial o anillo",
+          tipo: "Monof&aacute;sico o trif&aacute;sico, operaci&oacute;n radial o anillo",
           norma: "NMX-J-285 / K-0000-04 / K-0000-07 / K-0000-08"
         },
         points: [
-          "Diseño para instalación a nivel de suelo en exteriores.",
+          "Dise&ntilde;o para instalaci&oacute;n a nivel de suelo en exteriores.",
           "Gabinete a prueba de vandalismo y tanque en acero negro o inoxidable.",
-          "Aplicación residencial, comercial o industrial según configuración."
+          "Aplicaci&oacute;n residencial, comercial o industrial seg&uacute;n configuraci&oacute;n."
         ]
       },
       sumergible: {
@@ -3122,19 +3195,19 @@
         width: 1280,
         height: 719,
         alt: "Transformador sumergible Mebaten",
-        tag: "Distribución subterránea · NMX-J-287",
+        tag: "Distribuci&oacute;n subterr&aacute;nea &middot; NMX-J-287",
         title: "Transformador sumergible",
-        description: "Equipo para instalaciones eléctricas subterráneas, preparado para operar en espacios urbanos donde se busca seguridad, confiabilidad y baja exposición visual.",
+        description: "Equipo para instalaciones el&eacute;ctricas subterr&aacute;neas, preparado para operar en espacios urbanos donde se busca seguridad, confiabilidad y baja exposici&oacute;n visual.",
         specs: {
-          capacidad: "25 kVA hasta 3,000 kVA y más",
+          capacidad: "25 kVA hasta 3,000 kVA y m&aacute;s",
           tension: "Primario hasta 34.5 kV; secundario 240/120, 220/127, 440/254 o 480/277",
-          tipo: "Monofásico o trifásico, operación radial o anillo",
+          tipo: "Monof&aacute;sico o trif&aacute;sico, operaci&oacute;n radial o anillo",
           norma: "NMX-J-287 / K-0000-19 / K-0000-05 / K-0000-22"
         },
         points: [
-          "Diseñado para operación subterránea, incluso en condiciones de inmersión.",
-          "Solución eficiente para optimizar espacio y reducir contaminación visual.",
-          "Tanque en acero negro o inoxidable según requerimiento."
+          "Dise&ntilde;ado para operaci&oacute;n subterr&aacute;nea, incluso en condiciones de inmersi&oacute;n.",
+          "Soluci&oacute;n eficiente para optimizar espacio y reducir contaminaci&oacute;n visual.",
+          "Tanque en acero negro o inoxidable seg&uacute;n requerimiento."
         ]
       },
       poste: {
@@ -3142,18 +3215,18 @@
         width: 1080,
         height: 1074,
         alt: "Transformador tipo poste Mebaten",
-        tag: "Distribución aérea · NMX-J-116",
+        tag: "Distribuci&oacute;n a&eacute;rea &middot; NMX-J-116",
         title: "Transformador tipo poste",
-        description: "Transformador para sistemas de distribución aérea en aplicaciones residenciales, comerciales y de pequeña industria.",
+        description: "Transformador para sistemas de distribuci&oacute;n a&eacute;rea en aplicaciones residenciales, comerciales y de peque&ntilde;a industria.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
+          capacidad: "30 kVA hasta 3,000 kVA y m&aacute;s",
           tension: "Primario hasta 34.5 kV; secundario 220/127, 440/254 o 480/277",
-          tipo: "Monofásico, bifásico o trifásico",
+          tipo: "Monof&aacute;sico, bif&aacute;sico o trif&aacute;sico",
           norma: "NMX-J-116"
         },
         points: [
-          "Configuración para alimentación eléctrica en red aérea.",
-          "Aplicable en entornos residenciales, comerciales y pequeña industria.",
+          "Configuraci&oacute;n para alimentaci&oacute;n el&eacute;ctrica en red a&eacute;rea.",
+          "Aplicable en entornos residenciales, comerciales y peque&ntilde;a industria.",
           "Tanque en acero negro o inoxidable."
         ]
       },
@@ -3161,19 +3234,19 @@
         image: "assets/carousel/transformadores/transformadores-06.jpeg",
         width: 1280,
         height: 718,
-        alt: "Transformador tipo estación Mebaten",
-        tag: "Transformación industrial · NMX-J-284",
-        title: "Transformador tipo estación",
-        description: "Transformador trifásico para proyectos que requieren alimentación y distribución eléctrica en configuraciones de estación.",
+        alt: "Transformador tipo estaci&oacute;n Mebaten",
+        tag: "Transformaci&oacute;n industrial &middot; NMX-J-284",
+        title: "Transformador tipo estaci&oacute;n",
+        description: "Transformador trif&aacute;sico para proyectos que requieren alimentaci&oacute;n y distribuci&oacute;n el&eacute;ctrica en configuraciones de estaci&oacute;n.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
+          capacidad: "30 kVA hasta 3,000 kVA y m&aacute;s",
           tension: "Primario hasta 34.5 kV; secundario 220/127, 440/254 o 480/277",
-          tipo: "Trifásico",
+          tipo: "Trif&aacute;sico",
           norma: "NMX-J-284"
         },
         points: [
-          "Diseñado para sistemas de distribución eléctrica con mayor demanda.",
-          "Fabricación ajustada a tensión, carga y condiciones de instalación.",
+          "Dise&ntilde;ado para sistemas de distribuci&oacute;n el&eacute;ctrica con mayor demanda.",
+          "Fabricaci&oacute;n ajustada a tensi&oacute;n, carga y condiciones de instalaci&oacute;n.",
           "Tanque en acero negro o inoxidable."
         ]
       },
@@ -3181,19 +3254,19 @@
         image: "assets/carousel/subestaciones/subestaciones-03.jpeg",
         width: 960,
         height: 1280,
-        alt: "Transformador de subestación con gargantas Mebaten",
-        tag: "Subestación · NMX-J-284",
-        title: "Transformador subestación con gargantas",
-        description: "Unidad para sistemas de distribución que requieren conexión directa a subestación, con gargantas en media y baja tensión.",
+        alt: "Transformador de subestaci&oacute;n con gargantas Mebaten",
+        tag: "Subestaci&oacute;n &middot; NMX-J-284",
+        title: "Transformador subestaci&oacute;n con gargantas",
+        description: "Unidad para sistemas de distribuci&oacute;n que requieren conexi&oacute;n directa a subestaci&oacute;n, con gargantas en media y baja tensi&oacute;n.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
+          capacidad: "30 kVA hasta 3,000 kVA y m&aacute;s",
           tension: "Primario hasta 34.5 kV; secundario 220/127, 440/254 o 480/277",
-          tipo: "Trifásico con gargantas en M.T. y B.T.",
+          tipo: "Trif&aacute;sico con gargantas en M.T. y B.T.",
           norma: "NMX-J-284"
         },
         points: [
           "Recomendado para proyectos que requieren alta capacidad y confiabilidad.",
-          "Configuración para integración en subestaciones.",
+          "Configuraci&oacute;n para integraci&oacute;n en subestaciones.",
           "Tanque en acero negro o inoxidable."
         ]
       },
@@ -3202,17 +3275,17 @@
         width: 718,
         height: 1280,
         alt: "Transformador seco VPI Mebaten",
-        tag: "Tipo seco · NMX-J-351",
+        tag: "Tipo seco &middot; NMX-J-351",
         title: "Transformador seco VPI",
-        description: "Transformador seco impregnado al vacío y presión para media tensión, libre de aceite y orientado a seguridad operativa.",
+        description: "Transformador seco impregnado al vac&iacute;o y presi&oacute;n para media tensi&oacute;n, libre de aceite y orientado a seguridad operativa.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
+          capacidad: "30 kVA hasta 3,000 kVA y m&aacute;s",
           tension: "Clases 5 kV, 15 kV, 25 kV y 35 kV",
-          tipo: "Monofásico o trifásico, devanados en cobre o aluminio",
+          tipo: "Monof&aacute;sico o trif&aacute;sico, devanados en cobre o aluminio",
           norma: "NMX-J-351"
         },
         points: [
-          "Solución libre de mantenimiento y sin contaminantes por aceite.",
+          "Soluci&oacute;n libre de mantenimiento y sin contaminantes por aceite.",
           "Aislamiento clase H, F o B; enfriamiento AN / ANFA.",
           "Gabinetes Nema 1, Nema 3R y Nema 12; Factor K-13 o K-20."
         ]
@@ -3222,17 +3295,17 @@
         width: 720,
         height: 1600,
         alt: "Transformador seco encapsulado Mebaten",
-        tag: "Resina epóxica · NMX-J-351",
+        tag: "Resina ep&oacute;xica &middot; NMX-J-351",
         title: "Transformador seco encapsulado",
-        description: "Transformador encapsulado en resina epóxica, pensado para aplicaciones donde se busca seguridad, eficiencia y bajo impacto ambiental.",
+        description: "Transformador encapsulado en resina ep&oacute;xica, pensado para aplicaciones donde se busca seguridad, eficiencia y bajo impacto ambiental.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
+          capacidad: "30 kVA hasta 3,000 kVA y m&aacute;s",
           tension: "Clases 5 kV, 15 kV, 25 kV y 35 kV",
-          tipo: "Monofásico o trifásico, devanados en cobre o aluminio",
+          tipo: "Monof&aacute;sico o trif&aacute;sico, devanados en cobre o aluminio",
           norma: "NMX-J-351"
         },
         points: [
-          "Fabricación con tecnología encapsulada en resina epóxica.",
+          "Fabricaci&oacute;n con tecnolog&iacute;a encapsulada en resina ep&oacute;xica.",
           "Aislamiento clase H, F o B; enfriamiento AN / ANFA.",
           "Gabinetes Nema 1, Nema 3R y Nema 12."
         ]
@@ -3621,6 +3694,7 @@
     }, { once: true });
 
     const requiredFields = Array.from(form.querySelectorAll("[required]"));
+    const attachmentField = form.querySelector("#attachment");
     const formStatus = form.querySelector(".form-status");
 
     const setFieldError = (field, message = "") => {
@@ -3651,6 +3725,21 @@
         valid = valid && !message;
       });
 
+      if (attachmentField?.files.length) {
+        const file = attachmentField.files[0];
+        const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+        let message = "";
+        if (!allowedTypes.includes(file.type)) {
+          message = "Adjunta un archivo PDF, JPG o PNG.";
+        } else if (file.size > 10 * 1024 * 1024) {
+          message = "El archivo no debe superar 10 MB.";
+        }
+        setFieldError(attachmentField, message);
+        valid = valid && !message;
+      } else if (attachmentField) {
+        setFieldError(attachmentField);
+      }
+
       return valid;
     };
 
@@ -3658,8 +3747,10 @@
       field.addEventListener("input", () => setFieldError(field));
       field.addEventListener("change", () => setFieldError(field));
     });
+    attachmentField?.addEventListener("change", () => validateForm());
 
     const buildMailto = (data) => {
+      const file = data.get("attachment");
       const subject = "Solicitud de cotizaci\u00f3n Mebaten";
       const body = [
         `Nombre: ${data.get("name")}`,
@@ -3668,12 +3759,13 @@
         `Correo: ${data.get("email")}`,
         `Ciudad / Estado: ${data.get("location") || "No especificado"}`,
         `Equipo a cotizar: ${data.get("equipment")}`,
+        file && file.name ? `Archivo seleccionado: ${file.name}` : "Archivo seleccionado: No adjunto",
         "",
         "Informaci\u00f3n compartida:",
         data.get("message")
       ].join("\n");
 
-      return `mailto:alex.bglez97@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return `mailto:ventas@mebaten.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
 
     form.addEventListener("submit", async (event) => {
@@ -3701,25 +3793,21 @@
 
       if (hasEndpoint) {
         try {
-          const payload = Object.fromEntries(data.entries());
-          delete payload._gotcha;
+          data.delete("_gotcha");
           const response = await fetch(endpoint, {
             method: "POST",
-            body: JSON.stringify(payload),
+            body: data,
             headers: {
-              "Accept": "application/json",
-              "Content-Type": "application/json"
+              "Accept": "application/json"
             }
           });
 
-          const result = await response.json().catch(() => ({}));
-
-          if (!response.ok || result.ok === false) {
-            throw new Error(result.message || "No se pudo enviar el formulario.");
+          if (!response.ok) {
+            throw new Error("No se pudo enviar el formulario.");
           }
 
           form.reset();
-          formStatus.textContent = result.message || "Solicitud enviada. Un asesor comercial te contactar\u00e1 pronto.";
+          formStatus.textContent = "Solicitud enviada. Un asesor comercial te contactar\u00e1 pronto.";
           formStatus.classList.add("success");
           return;
         } catch (error) {

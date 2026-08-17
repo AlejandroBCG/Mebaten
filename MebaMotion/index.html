@@ -836,8 +836,38 @@
     }
 
     .tabs-progress,
-    .tabs-hint {
+    .tabs-hint,
+    .tabs-arrows {
       display: none;
+    }
+
+    .tabs-arrow {
+      position: relative;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(10, 79, 144, 0.18);
+      border-radius: 0;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      line-height: 1;
+      transition: color 180ms var(--ease-out), border-color 180ms var(--ease-out), opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+    }
+
+    .tabs-arrow:hover {
+      color: var(--ink-on-light);
+      border-color: rgba(10, 79, 144, 0.46);
+      transform: translateY(-1px);
+    }
+
+    .tabs-arrow:disabled {
+      opacity: 0.34;
+      cursor: default;
+      transform: none;
     }
 
     .tab-button {
@@ -2225,6 +2255,16 @@
         top: 0;
         max-width: 100%;
         overflow: hidden;
+        padding-top: 50px;
+      }
+
+      .tabs-arrows {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 4;
+        display: flex;
+        gap: 8px;
       }
 
       .product-tabs {
@@ -2286,21 +2326,35 @@
 
       .tab-button {
         min-height: 74px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        padding: 0 16px 12px;
+        overflow: hidden;
         scroll-snap-align: start;
       }
 
       .tab-button::before {
-        width: 34px;
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 0;
+        width: auto;
         height: 2px;
-        transform: scaleX(0.38);
+        justify-self: auto;
+        transform: scaleX(0.28);
+        transform-origin: left center;
+      }
+
+      .tab-button::after {
+        display: none;
       }
 
       .tab-button:hover::before {
-        transform: scaleX(0.72);
+        transform: scaleX(0.58);
       }
 
       .tab-button.active::before {
-        width: 44px;
+        width: auto;
         height: 2px;
         transform: scaleX(1);
       }
@@ -2511,6 +2565,71 @@
         font-size: 1.08rem;
       }
     }
+
+    @media (max-width: 390px) {
+      .nav-wrap,
+      .hero-inner,
+      .section-inner,
+      .footer-inner {
+        width: min(100% - 24px, 1240px);
+      }
+
+      .hero-mark {
+        width: clamp(176px, 58vw, 246px);
+      }
+
+      h1 {
+        font-size: clamp(2.28rem, 12vw, 3.35rem);
+      }
+
+      .hero-actions {
+        gap: 12px;
+      }
+
+      .button,
+      .technical-link {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .product-image {
+        max-height: 390px;
+      }
+
+      .transformer-subnav {
+        padding-left: 16px;
+      }
+
+      .transformer-subtab {
+        grid-template-columns: 3px minmax(0, 1fr);
+        padding-right: 0;
+      }
+
+      .transformer-subtab::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) and (max-height: 680px) {
+      .hero,
+      .hero-inner {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        padding-top: calc(var(--header) + 28px);
+      }
+
+      .hero-mark {
+        width: clamp(160px, 48vw, 240px);
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 10vw, 3.2rem);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2635,29 +2754,33 @@
               <button class="tab-button" type="button" data-product="capacitores" data-index="03" role="tab" aria-selected="false" aria-controls="panel-capacitores"><span>Bancos de capacitores</span></button>
               <button class="tab-button" type="button" data-product="subestaciones" data-index="04" role="tab" aria-selected="false" aria-controls="panel-subestaciones"><span>Subestaciones compactas</span></button>
             </div>
+            <div class="tabs-arrows" aria-label="Navegación de productos">
+              <button class="tabs-arrow" type="button" data-tabs-prev aria-label="Ver productos anteriores">&lsaquo;</button>
+              <button class="tabs-arrow" type="button" data-tabs-next aria-label="Ver más productos">&rsaquo;</button>
+            </div>
             <div class="tabs-progress" aria-hidden="true"><span></span></div>
             <p class="tabs-hint" aria-hidden="true">Desliza para ver más productos</p>
           </div>
           <div class="product-panels reveal">
             <article class="product-panel active" id="panel-transformadores" data-panel="transformadores" role="tabpanel" aria-hidden="false">
               <div class="product-image">
-                <img data-transformer-image decoding="sync" src="assets/carousel/pedestal/pedestal-02.jpeg" width="1280" height="1152" alt="Transformador tipo pedestal Mebaten" loading="eager" />
+                <img data-transformer-image decoding="sync" src="assets/carousel/pedestal/pedestal-tri-web.png" width="884" height="866" alt="Transformador tipo pedestal Mebaten" loading="eager" />
               </div>
               <div class="product-copy">
                 <span class="tag" data-transformer-tag>Transformación eléctrica · Norma J y K</span>
 
-                <h3 data-transformer-title>Transformador tipo pedestal</h3>
-                <p data-transformer-description>Transformadores tipo pedestal para operación exterior sobre base de concreto, con gabinete seguro para distribución eléctrica subterránea.</p>
+                <h3 data-transformer-title>Pedestal</h3>
+                <p data-transformer-description>Transformadores para instalación exterior sobre base de concreto, diseñados para sistemas de distribución eléctrica subterránea.</p>
                 <div class="tech-specs" aria-label="Especificaciones técnicas de transformadores">
-                  <div class="tech-spec"><span>Capacidad</span><strong data-transformer-spec="capacidad">25 kVA hasta 5,000 kVA y más</strong></div>
-                  <div class="tech-spec"><span>Tensión</span><strong data-transformer-spec="tension">Primario hasta 34.5 kV; secundario 240/120, 220/127, 440/254 o 480/277</strong></div>
-                  <div class="tech-spec"><span>Tipo</span><strong data-transformer-spec="tipo">Monofásico o trifásico, operación radial o anillo</strong></div>
-                  <div class="tech-spec"><span>Norma</span><strong data-transformer-spec="norma">NMX-J-285 / K-0000-04 / K-0000-07 / K-0000-08</strong></div>
+                  <div class="tech-spec"><span data-transformer-label="capacidad">Capacidad</span><strong data-transformer-spec="capacidad">Desde 10 kVA hasta 5,000 kVA</strong></div>
+                  <div class="tech-spec"><span data-transformer-label="tension">Clase</span><strong data-transformer-spec="tension">15 kV · 25 kV · 35 kV</strong></div>
+                  <div class="tech-spec"><span data-transformer-label="tipo">Tipo</span><strong data-transformer-spec="tipo">Monofásico o trifásico</strong></div>
+                  <div class="tech-spec"><span data-transformer-label="norma">Operación</span><strong data-transformer-spec="norma">Radial o anillo</strong></div>
                 </div>
                 <ul class="spec-list" data-transformer-points>
-                  <li>Diseño para instalación a nivel de suelo en exteriores.</li>
-                  <li>Gabinete a prueba de vandalismo y tanque en acero negro o inoxidable.</li>
-                  <li>Aplicación residencial, comercial o industrial según configuración.</li>
+                  <li>Diseño de frente muerto para mayor seguridad en la operación.</li>
+                  <li>Disponible con aceite mineral o vegetal, según requerimiento.</li>
+                  <li>Opciones de fabricación en acero negro o inoxidable.</li>
                 </ul>
                 <div class="product-actions">
                   <a class="button" href="#contacto">Cotizar transformador</a>
@@ -3010,11 +3133,29 @@
     const transformerDescription = document.querySelector("[data-transformer-description]");
     const transformerPoints = document.querySelector("[data-transformer-points]");
     const transformerSpecs = {
-      capacidad: document.querySelector("[data-transformer-spec='capacidad']"),
-      tension: document.querySelector("[data-transformer-spec='tension']"),
-      tipo: document.querySelector("[data-transformer-spec='tipo']"),
-      norma: document.querySelector("[data-transformer-spec='norma']")
+      capacidad: {
+        label: document.querySelector("[data-transformer-label='capacidad']"),
+        value: document.querySelector("[data-transformer-spec='capacidad']")
+      },
+      tension: {
+        label: document.querySelector("[data-transformer-label='tension']"),
+        value: document.querySelector("[data-transformer-spec='tension']")
+      },
+      tipo: {
+        label: document.querySelector("[data-transformer-label='tipo']"),
+        value: document.querySelector("[data-transformer-spec='tipo']")
+      },
+      norma: {
+        label: document.querySelector("[data-transformer-label='norma']"),
+        value: document.querySelector("[data-transformer-spec='norma']")
+      }
     };
+    let transformerImageTimer;
+    const clearTransformerImageCarousel = () => {
+      window.clearInterval(transformerImageTimer);
+      transformerImageTimer = undefined;
+    };
+
     const decodeHtml = (value) => {
       const textarea = document.createElement("textarea");
       textarea.innerHTML = value;
@@ -3037,6 +3178,8 @@
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const tabsTrack = document.querySelector(".product-tabs");
     const tabsProgress = document.querySelector(".tabs-progress span");
+    const tabsPrev = document.querySelector("[data-tabs-prev]");
+    const tabsNext = document.querySelector("[data-tabs-next]");
     const setMenuState = (isOpen, shouldRestoreFocus = true) => {
       nav.classList.toggle("open", isOpen);
       menuButton.classList.toggle("open", isOpen);
@@ -3098,143 +3241,164 @@
 
     const transformerProducts = {
       pedestal: {
-        image: "assets/carousel/pedestal/pedestal-02.jpeg",
-        width: 1280,
-        height: 1152,
+        image: "assets/carousel/pedestal/pedestal-tri-web.png",
+        images: [
+          { src: "assets/carousel/pedestal/pedestal-tri-web.png", width: 884, height: 866 },
+          { src: "assets/carousel/pedestal/pedestal-mono-web.png", width: 1673, height: 890 }
+        ],
+        width: 884,
+        height: 866,
         alt: "Transformador tipo pedestal Mebaten",
         tag: "Transformación eléctrica · Norma J y K",
-        title: "Transformador tipo pedestal",
-        description: "Transformadores tipo pedestal para operación exterior sobre base de concreto, con gabinete seguro para distribución eléctrica subterránea.",
+        title: "Pedestal",
+        description: "Transformadores para instalación exterior sobre base de concreto, diseñados para sistemas de distribución eléctrica subterránea.",
         specs: {
-          capacidad: "25 kVA hasta 5,000 kVA y más",
-          tension: "Primario hasta 34.5 kV; secundario 240/120, 220/127, 440/254 o 480/277",
-          tipo: "Monofásico o trifásico, operación radial o anillo",
-          norma: "NMX-J-285 / K-0000-04 / K-0000-07 / K-0000-08"
+          capacidad: { label: "Capacidad", value: "Desde 10 kVA hasta 5,000 kVA" },
+          tension: { label: "Clase", value: "15 kV · 25 kV · 35 kV" },
+          tipo: { label: "Tipo", value: "Monofásico o trifásico" },
+          norma: { label: "Operación", value: "Radial o anillo" }
         },
         points: [
-          "Diseño para instalación a nivel de suelo en exteriores.",
-          "Gabinete a prueba de vandalismo y tanque en acero negro o inoxidable.",
-          "Aplicación residencial, comercial o industrial según configuración."
+          "Diseño de frente muerto para mayor seguridad en la operación.",
+          "Disponible con aceite mineral o vegetal, según requerimiento.",
+          "Opciones de fabricación en acero negro o inoxidable."
         ]
       },
       sumergible: {
-        image: "assets/carousel/transformadores/transformadores-04.jpeg",
-        width: 1280,
-        height: 719,
+        image: "assets/carousel/transformadores/sumergible-01.png",
+        images: [
+          { src: "assets/carousel/transformadores/sumergible-01.png", width: 620, height: 859 },
+          { src: "assets/carousel/transformadores/sumergible-02.png", width: 643, height: 779 }
+        ],
+        width: 620,
+        height: 859,
         alt: "Transformador sumergible Mebaten",
-        tag: "Distribución subterránea · NMX-J-287",
-        title: "Transformador sumergible",
-        description: "Equipo para instalaciones eléctricas subterráneas, preparado para operar en espacios urbanos donde se busca seguridad, confiabilidad y baja exposición visual.",
+        tag: "Distribución subterránea · Norma J y K",
+        title: "Sumergible",
+        description: "Transformadores diseñados para instalaciones eléctricas subterráneas y operación en registros o bóvedas con posible presencia de agua.",
         specs: {
-          capacidad: "25 kVA hasta 3,000 kVA y más",
-          tension: "Primario hasta 34.5 kV; secundario 240/120, 220/127, 440/254 o 480/277",
-          tipo: "Monofásico o trifásico, operación radial o anillo",
-          norma: "NMX-J-287 / K-0000-19 / K-0000-05 / K-0000-22"
+          capacidad: { label: "Capacidad", value: "Desde 10 kVA hasta 1,000 kVA" },
+          tension: { label: "Clase", value: "15 kV · 25 kV · 35 kV" },
+          tipo: { label: "Tipo", value: "Monofásico o trifásico" },
+          norma: { label: "Operación", value: "Radial o anillo" }
         },
         points: [
-          "Diseñado para operación subterránea, incluso en condiciones de inmersión.",
-          "Solución eficiente para optimizar espacio y reducir contaminación visual.",
-          "Tanque en acero negro o inoxidable según requerimiento."
+          "Diseñado para operación subterránea y riesgo ocasional de inundación.",
+          "Disponible con aceite mineral o vegetal, según requerimiento.",
+          "Opciones de fabricación en acero negro o inoxidable."
         ]
       },
       poste: {
-        image: "assets/carousel/transformadores/transformadores-01.jpeg",
-        width: 1080,
-        height: 1074,
+        image: "assets/carousel/transformadores/poste-trif-web.png",
+        images: [
+          { src: "assets/carousel/transformadores/poste-trif-web.png", width: 723, height: 875 },
+          { src: "assets/carousel/transformadores/poste-web.png", width: 1177, height: 882 }
+        ],
+        width: 723,
+        height: 875,
         alt: "Transformador tipo poste Mebaten",
-        tag: "Distribución aérea · NMX-J-116",
-        title: "Transformador tipo poste",
-        description: "Transformador para sistemas de distribución aérea en aplicaciones residenciales, comerciales y de pequeña industria.",
+        tag: "Distribución aérea · Norma J",
+        title: "Poste",
+        description: "Transformadores para sistemas de distribución eléctrica aérea, utilizados en aplicaciones residenciales, comerciales y de pequeña industria.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
-          tension: "Primario hasta 34.5 kV; secundario 220/127, 440/254 o 480/277",
-          tipo: "Monofásico, bifásico o trifásico",
-          norma: "NMX-J-116"
+          capacidad: { label: "Capacidad", value: "Desde 5 kVA hasta 225 kVA" },
+          tension: { label: "Clase", value: "15 kV · 25 kV · 35 kV" },
+          tipo: { label: "Tipo", value: "Monofásico o trifásico" },
+          norma: { label: "Montaje", value: "Instalación en poste" }
         },
         points: [
-          "Configuración para alimentación eléctrica en red aérea.",
-          "Aplicable en entornos residenciales, comerciales y pequeña industria.",
-          "Tanque en acero negro o inoxidable."
+          "Diseñado para redes de distribución eléctrica aérea.",
+          "Disponible con aceite mineral o vegetal, según requerimiento.",
+          "Configuraciones convencionales o especiales según proyecto."
         ]
       },
       estacion: {
-        image: "assets/carousel/transformadores/transformadores-06.jpeg",
-        width: 1280,
-        height: 718,
+        image: "assets/carousel/transformadores/estacion-web.png",
+        width: 1115,
+        height: 788,
         alt: "Transformador tipo estación Mebaten",
-        tag: "Transformación industrial · NMX-J-284",
-        title: "Transformador tipo estación",
-        description: "Transformador trifásico para proyectos que requieren alimentación y distribución eléctrica en configuraciones de estación.",
+        tag: "Transformación industrial · Norma J",
+        title: "Estación",
+        description: "Transformadores trifásicos para proyectos de mayor demanda, utilizados en sistemas de alimentación y distribución eléctrica en configuración tipo estación.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
-          tension: "Primario hasta 34.5 kV; secundario 220/127, 440/254 o 480/277",
-          tipo: "Trifásico",
-          norma: "NMX-J-284"
+          capacidad: { label: "Capacidad", value: "Desde 225 kVA hasta 5,000 kVA" },
+          tension: { label: "Clase", value: "15 kV · 25 kV · 35 kV" },
+          tipo: { label: "Tipo", value: "Trifásico" },
+          norma: { label: "Conexión", value: "Delta-Estrella o Estrella-Estrella" }
         },
         points: [
-          "Diseñado para sistemas de distribución eléctrica con mayor demanda.",
-          "Fabricación ajustada a tensión, carga y condiciones de instalación.",
-          "Tanque en acero negro o inoxidable."
+          "Diseñado para aplicaciones de mayor demanda eléctrica.",
+          "Disponible con aceite mineral o vegetal, según requerimiento.",
+          "Fabricación adaptable a tensión, conexión y condiciones del proyecto."
         ]
       },
       gargantas: {
-        image: "assets/carousel/subestaciones/subestaciones-03.jpeg",
-        width: 960,
-        height: 1280,
+        image: "assets/carousel/transformadores/subestacion-gargantas-web.png",
+        width: 1469,
+        height: 859,
         alt: "Transformador de subestación con gargantas Mebaten",
-        tag: "Subestación · NMX-J-284",
-        title: "Transformador subestación con gargantas",
-        description: "Unidad para sistemas de distribución que requieren conexión directa a subestación, con gargantas en media y baja tensión.",
+        tag: "Subestación · Norma J",
+        title: "Subestación con Gargantas",
+        description: "Transformadores trifásicos diseñados para integración directa en subestaciones, con gargantas de acoplamiento en media y baja tensión.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
-          tension: "Primario hasta 34.5 kV; secundario 220/127, 440/254 o 480/277",
-          tipo: "Trifásico con gargantas en M.T. y B.T.",
-          norma: "NMX-J-284"
+          capacidad: { label: "Capacidad", value: "Desde 225 kVA hasta 5,000 kVA" },
+          tension: { label: "Clase", value: "15 kV · 25 kV · 35 kV" },
+          tipo: { label: "Tipo", value: "Trifásico" },
+          norma: { label: "Conexión", value: "Gargantas en M.T. y B.T." }
         },
         points: [
-          "Recomendado para proyectos que requieren alta capacidad y confiabilidad.",
-          "Configuración para integración en subestaciones.",
-          "Tanque en acero negro o inoxidable."
+          "Diseñado para integración directa con equipos de subestación.",
+          "Disponible con aceite mineral o vegetal, según requerimiento.",
+          "Fabricación ajustable a tensión, conexión y dimensiones del proyecto."
         ]
       },
       "seco-vpi": {
-        image: "assets/carousel/transformadores/transformadores-07.jpeg",
-        width: 718,
+        image: "assets/carousel/transformadores/seco-vpi-01.png",
+        images: [
+          { src: "assets/carousel/transformadores/seco-vpi-01.png", width: 720, height: 1280 },
+          { src: "assets/carousel/transformadores/seco-vpi-02.png", width: 1280, height: 720 },
+          { src: "assets/carousel/transformadores/seco-vpi-03.png", width: 1280, height: 960 }
+        ],
+        width: 720,
         height: 1280,
         alt: "Transformador seco VPI Mebaten",
-        tag: "Tipo seco · NMX-J-351",
-        title: "Transformador seco VPI",
-        description: "Transformador seco impregnado al vacío y presión para media tensión, libre de aceite y orientado a seguridad operativa.",
+        tag: "Transformador seco · VPI",
+        title: "Transformador Seco VPI",
+        description: "Transformadores secos impregnados al vacío y presión, diseñados para instalaciones donde se requiere operación sin aceite, seguridad y bajo mantenimiento.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
-          tension: "Clases 5 kV, 15 kV, 25 kV y 35 kV",
-          tipo: "Monofásico o trifásico, devanados en cobre o aluminio",
-          norma: "NMX-J-351"
+          capacidad: { label: "Capacidad", value: "B.T.: 1 a 1,000 kVA · M.T.: 30 a 3,000 kVA" },
+          tension: { label: "Tensión", value: "Baja y media tensión, hasta 35 kV" },
+          tipo: { label: "Devanados", value: "Cobre o aluminio" },
+          norma: { label: "Gabinete", value: "Opciones NEMA según instalación" }
         },
         points: [
-          "Solución libre de mantenimiento y sin contaminantes por aceite.",
-          "Aislamiento clase H, F o B; enfriamiento AN / ANFA.",
-          "Gabinetes Nema 1, Nema 3R y Nema 12; Factor K-13 o K-20."
+          "Tecnología VPI, sin líquidos aislantes y de bajo mantenimiento.",
+          "Enfriamiento por aire natural o forzado, según configuración.",
+          "Configuraciones especiales disponibles según aplicación y proyecto."
         ]
       },
       "seco-encapsulado": {
-        image: "assets/carousel/transformadores/transformadores-08.jpeg",
-        width: 720,
-        height: 1600,
+        image: "assets/carousel/transformadores/encapsulado-01.png",
+        images: [
+          { src: "assets/carousel/transformadores/encapsulado-01.png", width: 658, height: 880 },
+          { src: "assets/carousel/transformadores/encapsulado-02.png", width: 732, height: 883 }
+        ],
+        width: 658,
+        height: 880,
         alt: "Transformador seco encapsulado Mebaten",
-        tag: "Resina epóxica · NMX-J-351",
+        tag: "Resina epóxica · Transformador seco",
         title: "Transformador seco encapsulado",
-        description: "Transformador encapsulado en resina epóxica, pensado para aplicaciones donde se busca seguridad, eficiencia y bajo impacto ambiental.",
+        description: "Transformadores encapsulados en resina epóxica, diseñados para instalaciones donde se requiere alta seguridad, bajo mantenimiento y resistencia a condiciones ambientales exigentes.",
         specs: {
-          capacidad: "30 kVA hasta 3,000 kVA y más",
-          tension: "Clases 5 kV, 15 kV, 25 kV y 35 kV",
-          tipo: "Monofásico o trifásico, devanados en cobre o aluminio",
-          norma: "NMX-J-351"
+          capacidad: { label: "Capacidad", value: "Según requerimiento y proyecto" },
+          tension: { label: "Tensión", value: "Baja y media tensión" },
+          tipo: { label: "Devanados", value: "Cobre o aluminio" },
+          norma: { label: "Gabinete", value: "Opciones NEMA según instalación" }
         },
         points: [
-          "Fabricación con tecnología encapsulada en resina epóxica.",
-          "Aislamiento clase H, F o B; enfriamiento AN / ANFA.",
-          "Gabinetes Nema 1, Nema 3R y Nema 12."
+          "Tecnología encapsulada en resina epóxica, sin aceite y de bajo mantenimiento.",
+          "Alta resistencia a humedad, polvo y condiciones ambientales exigentes.",
+          "Configuraciones para instalación interior o exterior, según gabinete."
         ]
       }
     };
@@ -3252,16 +3416,32 @@
         item.tabIndex = active ? 0 : -1;
       });
 
-      transformerImage.src = data.image;
-      transformerImage.width = data.width;
-      transformerImage.height = data.height;
-      transformerImage.alt = decodeHtml(data.alt);
+      clearTransformerImageCarousel();
+      const imageSet = data.images?.length ? data.images : [{ src: data.image, width: data.width, height: data.height }];
+      let transformerImageIndex = 0;
+      const setTransformerImage = (slide) => {
+        transformerImage.src = slide.src;
+        transformerImage.width = slide.width || data.width;
+        transformerImage.height = slide.height || data.height;
+        transformerImage.alt = decodeHtml(data.alt);
+      };
+      setTransformerImage(imageSet[transformerImageIndex]);
+      if (!reducedMotion.matches && imageSet.length > 1) {
+        transformerImageTimer = window.setInterval(() => {
+          transformerImageIndex = (transformerImageIndex + 1) % imageSet.length;
+          setTransformerImage(imageSet[transformerImageIndex]);
+        }, 3000);
+      }
       transformerTag.textContent = decodeHtml(data.tag);
       transformerTitle.textContent = decodeHtml(data.title);
       transformerDescription.textContent = decodeHtml(data.description);
-      Object.entries(data.specs).forEach(([key, value]) => {
-        if (transformerSpecs[key]) {
-          transformerSpecs[key].textContent = decodeHtml(value);
+      Object.entries(data.specs).forEach(([key, spec]) => {
+        const target = transformerSpecs[key];
+        if (target?.label) {
+          target.label.textContent = decodeHtml(spec.label);
+        }
+        if (target?.value) {
+          target.value.textContent = decodeHtml(spec.value);
         }
       });
       transformerPoints.replaceChildren(...data.points.map((point) => { const item = document.createElement("li"); item.textContent = decodeHtml(point); return item; }));
@@ -3274,18 +3454,39 @@
       }
     };
     const updateTabsScroll = () => {
-      if (!tabsTrack || !tabsProgress) {
+      if (!tabsTrack) {
         return;
       }
 
       const maxScroll = tabsTrack.scrollWidth - tabsTrack.clientWidth;
       const progress = maxScroll > 0 ? tabsTrack.scrollLeft / maxScroll : 1;
-      tabsProgress.style.transform = `translateX(${(progress - 1) * 100}%)`;
+      if (tabsProgress) {
+        tabsProgress.style.transform = `translateX(${(progress - 1) * 100}%)`;
+      }
+      if (tabsPrev) {
+        tabsPrev.disabled = maxScroll <= 0 || tabsTrack.scrollLeft <= 2;
+      }
+      if (tabsNext) {
+        tabsNext.disabled = maxScroll <= 0 || tabsTrack.scrollLeft >= maxScroll - 2;
+      }
+    };
+
+    const scrollProductTabs = (direction) => {
+      if (!tabsTrack) {
+        return;
+      }
+
+      tabsTrack.scrollBy({
+        left: direction * Math.max(180, tabsTrack.clientWidth * 0.72),
+        behavior: reducedMotion.matches ? "auto" : "smooth"
+      });
     };
 
     if (tabsTrack) {
       tabsTrack.addEventListener("scroll", updateTabsScroll, { passive: true });
       window.addEventListener("resize", updateTabsScroll);
+      tabsPrev?.addEventListener("click", () => scrollProductTabs(-1));
+      tabsNext?.addEventListener("click", () => scrollProductTabs(1));
       updateTabsScroll();
     }
 
@@ -3612,6 +3813,7 @@
         "assets/product-control-panels.jpg",
         "assets/product-capacitors.jpg",
         "assets/product-substation-compacta.jpeg",
+        ...Object.values(transformerProducts).flatMap((product) => product.images?.length ? product.images.map((slide) => slide.src) : [product.image]),
         ...projectCards.flatMap((card) => card.dataset.carousel.split("|").filter(Boolean))
       ].forEach((src) => {
         const img = new Image();
